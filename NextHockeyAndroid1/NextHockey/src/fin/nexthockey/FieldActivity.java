@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class FieldActivity extends Activity {
 	
-	private Button taklaus;
+	private Button tackle;
 	private Button laukaus;
 	private Button maali;
 	private Button torjunta;
