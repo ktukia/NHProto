@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NextHockey</string>
+    <string name="taklaus">Taklaus</string>
+    <string name="laukaus">Laukaus</string>
+    <string name="maali">Maali</string>
+    <string name="torjunta">Torjunta</string>
+    <string name="era_teksti">ERÄ</string>
+    <string name="kaukalo"></string>
+
+</resources>
