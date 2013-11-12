@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Color;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,6 +20,8 @@ public class FieldActivity extends Activity {
 	
 	private ImageView kaukalo;
 	private TextView era;
+	
+	private int color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +33,21 @@ public class FieldActivity extends Activity {
         era.setText("ERÄ 1");
                 
         kaukalo = (ImageView) findViewById(R.id.kaukalo);
-        kaukalo.isClickable();
+        
         
         taklaus = (Button) findViewById(R.id.taklaus);
         laukaus = (Button) findViewById(R.id.laukaus);
         maali = (Button) findViewById(R.id.maali);
         torjunta = (Button) findViewById(R.id.torjunta);
+        
+        kaukalo.setOnTouchListener(new View.OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+		});
         
        taklaus.setOnClickListener(new View.OnClickListener() {
 		
@@ -43,6 +55,8 @@ public class FieldActivity extends Activity {
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			taklaus.setBackgroundColor(Color.BLUE);
+			
+			color = 1;
 		}
 	});
        
@@ -53,6 +67,8 @@ public class FieldActivity extends Activity {
    			// TODO Auto-generated method stub
    		
    			laukaus.setBackgroundColor(Color.BLUE);
+   			
+   			color = 2;
    		}
    	});
        
@@ -62,6 +78,8 @@ public class FieldActivity extends Activity {
    		public void onClick(View v) {
    			// TODO Auto-generated method stub
    			maali.setBackgroundColor(Color.BLUE);
+   			
+   			color = 3;
    		}
    	});
        
@@ -71,6 +89,8 @@ public class FieldActivity extends Activity {
    		public void onClick(View v) {
    			// TODO Auto-generated method stub
    			torjunta.setBackgroundColor(Color.BLUE);
+   			
+   			color = 4;
    		}
    	});
        
