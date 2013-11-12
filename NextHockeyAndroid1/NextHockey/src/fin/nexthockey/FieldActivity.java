@@ -12,7 +12,9 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -23,14 +25,10 @@ public class FieldActivity extends Activity {
 	private Button maali;
 	private Button torjunta;
 	
-	private LinearLayout kaukalo;
+	private RelativeLayout kaukalo;
 	private TextView era;
-	
-	private Paint paint = new Paint();
-	private int color;
-	private Canvas canvas;
-	private Bitmap bitmap;
-
+	private int color = 5;
+	private ImageView iv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,26 +37,31 @@ public class FieldActivity extends Activity {
         era = (TextView) findViewById(R.id.era_teksti);
         
         era.setText("ERÄ 1");
+        
                 
-        kaukalo = (LinearLayout) findViewById(R.id.kaukalo);
-        
-        kaukalo.addView(new SurfaceView(this));
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icehockey_field);
-        canvas = new Canvas(bitmap);
-        kaukalo.draw(canvas);
-        
-        
-        
+        kaukalo = (RelativeLayout) findViewById(R.id.kaukalo);
+           
         taklaus = (Button) findViewById(R.id.taklaus);
         laukaus = (Button) findViewById(R.id.laukaus);
         maali = (Button) findViewById(R.id.maali);
         torjunta = (Button) findViewById(R.id.torjunta);
+        iv = new ImageView(this);
+
         
         kaukalo.setOnTouchListener(new View.OnTouchListener() {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
+				kaukalo.removeAllViews();
+				int x = Math.round(event.getX());
+				int y = Math.round(event.getY());
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(10,10);
+				params.leftMargin = x;
+				params.topMargin = y;
+				iv.setBackgroundResource(R.drawable.piste);
+				kaukalo.addView(iv, params);
+				kaukalo.bringChildToFront(iv);
+				
 				return false;
 			}
 		});
