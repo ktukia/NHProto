@@ -2,12 +2,17 @@ package fin.nexthockey;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.Menu;
 import android.view.MotionEvent;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -18,10 +23,13 @@ public class FieldActivity extends Activity {
 	private Button maali;
 	private Button torjunta;
 	
-	private ImageView kaukalo;
+	private LinearLayout kaukalo;
 	private TextView era;
 	
+	private Paint paint = new Paint();
 	private int color;
+	private Canvas canvas;
+	private Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +40,13 @@ public class FieldActivity extends Activity {
         
         era.setText("ERÄ 1");
                 
-        kaukalo = (ImageView) findViewById(R.id.kaukalo);
+        kaukalo = (LinearLayout) findViewById(R.id.kaukalo);
+        
+        kaukalo.addView(new SurfaceView(this));
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icehockey_field);
+        canvas = new Canvas(bitmap);
+        kaukalo.draw(canvas);
+        
         
         
         taklaus = (Button) findViewById(R.id.taklaus);
