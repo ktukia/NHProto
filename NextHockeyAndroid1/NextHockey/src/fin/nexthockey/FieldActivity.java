@@ -27,8 +27,8 @@ public class FieldActivity extends Activity {
 	
 	private RelativeLayout kaukalo;
 	private TextView era;
-	private int color = 5;
-	private ImageView iv;
+	private int color = 0;
+	private ImageView[] iv = new ImageView[4];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +45,14 @@ public class FieldActivity extends Activity {
         laukaus = (Button) findViewById(R.id.laukaus);
         maali = (Button) findViewById(R.id.maali);
         torjunta = (Button) findViewById(R.id.torjunta);
-        iv = new ImageView(this);
+        iv[0] = new ImageView(this);
+        iv[0].setBackgroundResource(R.drawable.piste);
+        iv[1] = new ImageView(this);
+        iv[1].setBackgroundResource(R.drawable.piste2);
+        iv[2] = new ImageView(this);
+        iv[2].setBackgroundResource(R.drawable.piste3);
+        iv[3] = new ImageView(this);
+        iv[3].setBackgroundResource(R.drawable.piste4);
 
         
         kaukalo.setOnTouchListener(new View.OnTouchListener() {
@@ -58,9 +65,9 @@ public class FieldActivity extends Activity {
 				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(10,10);
 				params.leftMargin = x;
 				params.topMargin = y;
-				iv.setBackgroundResource(R.drawable.piste);
-				kaukalo.addView(iv, params);
-				kaukalo.bringChildToFront(iv);
+				
+				kaukalo.addView(iv[color], params);
+				//kaukalo.bringChildToFront(iv);
 				
 				return false;
 			}
@@ -73,7 +80,7 @@ public class FieldActivity extends Activity {
 			// TODO Auto-generated method stub
 			taklaus.setBackgroundColor(Color.BLUE);
 			
-			color = 1;
+			color = 0;
 		}
 	});
        
@@ -85,7 +92,7 @@ public class FieldActivity extends Activity {
    		
    			laukaus.setBackgroundColor(Color.BLUE);
    			
-   			color = 2;
+   			color = 1;
    		}
    	});
        
@@ -96,7 +103,7 @@ public class FieldActivity extends Activity {
    			// TODO Auto-generated method stub
    			maali.setBackgroundColor(Color.BLUE);
    			
-   			color = 3;
+   			color = 2;
    		}
    	});
        
@@ -107,7 +114,7 @@ public class FieldActivity extends Activity {
    			// TODO Auto-generated method stub
    			torjunta.setBackgroundColor(Color.BLUE);
    			
-   			color = 4;
+   			color = 3;
    		}
    	});
        
