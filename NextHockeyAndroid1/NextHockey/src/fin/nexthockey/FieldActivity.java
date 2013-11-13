@@ -36,7 +36,7 @@ public class FieldActivity extends Activity {
         
         era = (TextView) findViewById(R.id.era_teksti);
         
-        era.setText("ERÄ 1");
+        era.setText("ERÃ„ 1");
         
                 
         kaukalo = (RelativeLayout) findViewById(R.id.kaukalo);
@@ -72,7 +72,7 @@ public class FieldActivity extends Activity {
 				return false;
 			}
 		});
-        
+        // Listenerit
        taklaus.setOnClickListener(new View.OnClickListener() {
 		
 		@Override
